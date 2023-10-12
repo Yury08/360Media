@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Профиль
+{% endblock %}
+
+{% block content %}
+
+
+<!--<div class="section">-->
+<!--    <div class="container">-->
+<!--      <div class="profile__page">-->
+<!--          <h1 class="profile__title">Профиль пользователя</h1>-->
+<!--          <div class="profile__info">-->
+<!--              <img class="profile__img" width="80" height="80" src="{{ user.profile.img.url }}">-->
+<!--              <p class="profile__text">-->
+<!--                <strong class="">@{{ user.username }}</strong>-->
+<!--                {% if user.email %}-->
+<!--                <b>Email:</b> {{ user.email }}-->
+<!--                {% endif %}-->
+<!--              </p>-->
+<!--          </div>-->
+<!--          <form method="post" enctype="multipart/form-data" class="form-register mt-4">-->
+<!--              {% csrf_token %}-->
+<!--              {{ apdateUserForm.as_p }}-->
+<!--              {{ profileForm.as_p }}-->
+<!--              <button class="section__register-button" type="submit">Обновить</button>-->
+<!--          </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--</div>-->
+<section class="section">
+<div class="profile">
+  <h2 class="profile__title">Профиль пользователя</h2>
+    <div class="user-box">
+        <div class="profile__header">
+            <img class="profile__image" src="{{ user.profile.img.url }}" width="150px" height="150px" alt="">
+            <span><strong class="">@{{ user.username }}</strong></span>
+        </div>
+    </div>
+  <form method="post" enctype="multipart/form-data">
+      <div class="user-box profile__email">
+          <label class="profile__label">Email</label>
+          {{ apdateUserForm.email }}
+          {{ apdateUserForm.email.errors }}
+      </div>
+      <div class="user-box profile__username">
+          <label class="profile__label">Логин</label>
+          {{ apdateUserForm.username }}
+          {{ apdateUserForm.username.errors }}
+      </div>
+      {{ profileForm.as_p }}
+        <button class="users__btn login__btn" type="submit">
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            Обновить
+        </button>
+    {% csrf_token %}
+  </form>
+</div>
+</section>
+
+{% endblock %}

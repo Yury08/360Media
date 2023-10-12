@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Жанры
+{% endblock %}
+
+
+{% block meta %}
+    <meta name="keywords" content="жанры, жанры фильмов, жанр фильма">
+    <meta name="description" property="og:description" content="На этой странице вы сможете выбрать любой, понравившийся вам, жанр фильма">
+{% endblock %}
+
+{% block content %}
+        <section class="genre__section">
+            <div class="container">
+                <div class="section__header">
+                    <h1 class="section__header_title">Выберите жанр</h1>
+                </div>
+                {% for genre in genres %}
+                    <div class="genre__card">
+
+                        <div class="genre__card-img">
+                           {% if genre.icon %}
+                                <img width="180" height="250" src="{{ genre.icon.url }}">
+                            {% else %}
+                                <img width="180" height="250" src="./../../media/default/def_img.jpg">
+                            {% endif %}
+                        </div>
+
+                        <div class="genre__card-descr">
+                            <a href="{% url 'films:genres_detail' genre.id %}" class="genre__card-title">{{ genre.title }}</a>
+                            <p class="genre__card-text">{{ genre.descr }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </section>
+
+{% endblock %}

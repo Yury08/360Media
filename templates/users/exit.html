@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Выход
+{% endblock %}
+
+{% block content %}
+    <section class="section">
+        <div class="login-box">
+          <h2>Вы успешно вышли с аккаунта</h2>
+          <a class="help__link" href="{% url 'users:user' %}">Войти в личный кабинет снова</a>
+        </div>
+    </section>
+{% endblock %}

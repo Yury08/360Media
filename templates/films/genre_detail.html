@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    {% for value_title in title %}
+        {{ value_title }}
+    {% endfor %}
+{% endblock %}
+
+{% block icon %}
+    <link rel="icon" href="../../media/media/work_image/free-icon-letter-k-8142535.png">
+{% endblock %}
+
+{% block meta%}
+    <meta name="keywords" content="Жанр {% for value_title in title %}{{ value_title }}{% endfor %},
+{% for value_title in title %}{{ value_title }}{% endfor %}">
+    <meta name="description" property="og:description" content="На этой странице вы сможете посмотреть все фильмы из жанра {% for value_title in title %}{{ value_title }}{% endfor %}">
+{% endblock %}
+
+
+{% block content %}
+        <section class="genre__section">
+            <div class="container">
+                <div class="section__header">
+                    {% for value_title in title %}
+                        <h1 class="section__header_title">{{ value_title }}</h1>
+                    {% endfor %}
+                </div>
+                {% for film in films %}
+                <div class="film__card">
+
+                        <div class="film__card-img">
+                            <img width="170" height="240" src="https://kinopoiskapiunofficial.tech/images/posters/kp_small/{{ film.move.kp_id_movie }}.jpg">
+                        </div>
+
+                        <div class="film__card-descr">
+                            <a href="{% url 'films:film_detail' film.move.id %}" class="film__card-title">{{ film.move.title }}</a>
+                            <p class="film__card-text">{{ film.move.descr }}</p>
+                            <h4 class="film__card-tags">{{ film.move.tags_table.all|join:", " }}</h4>
+                            <a href="https://kino.is/{{ film.move.kp_id_movie }}" target="_blank" class="users__btn login__btn" type="submit">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                                Смотреть фильм
+                            </a>
+                        </div>
+                </div>
+                <hr>
+                {% endfor %}
+            </div>
+        </section>
+
+{% endblock %}

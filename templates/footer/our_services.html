@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Наши сервисы
+{% endblock %}
+
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="about__body">
+            <h2 class="about__header-title">Наши сервисы</h2>
+            <p class="about__body-text">
+                Мы предоставляем бесплатный доступ ко всем фильма и сериалам на сайте.
+                Так же у нас есть свой API, если вы оформите подписку, у вас будет доступ на месяц к данным на сайте
+                <strong style="text-decoration: underline"><a href="{% url 'films:paid_api' %}">оформить</a></strong>
+            </p>
+        </div>
+    </div>
+</section>
+{% endblock %}

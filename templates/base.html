@@ -1,0 +1,183 @@
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/index.css' %}">
+    <link rel="stylesheet" href="{% static 'css/media.css' %}">
+    {% block icon %}
+        <link rel="icon" href="./../media/media/work_image/360-view.png">
+    {% endblock %}
+    <link rel="stylesheet" href="https://kit.fontawesome.com/62b48361cd.css" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/62b48361cd.js" crossorigin="anonymous"></script>
+    {% block meta%}
+        <meta name="keywords" content="онлайн-кинотеатр, krwz">
+        <meta name="description" property="og:description" content="На этом сайте вы сможете смотреть ваши любимые фильмы бесплатно">
+    {% endblock %}
+</head>
+<body>
+    <header class="header">
+        <div class="container">
+            <div class="header__inner">
+                <div class="logo"><a href="{% url 'films:main' %}">360Media</a></div>
+
+                <nav class="nav" id="nav">
+                    <!---- search field ------->
+                    <div class="nav-link close-burger">
+                        <a id="search-link" class="searc nav__item">
+                        <i id="search-icon" class="fa fa-search"></i>
+                         <form action="{% url 'films:search' %}" method="get" class="search-bar">
+                            <input name="q" class="search__input" type="search" id="search-input" pattern=".*\S.*" required>
+                            <button class="search-btn" id="search-btn" type="submit"><span>найти</span></button>
+                        </form>
+                        </a>
+                        <a href="{% url 'films:genres' %}" class="nav__item">Жанры</a>
+                        <a href="{% url 'films:films_list' %}" class="nav__item">Фильмы</a>
+                        <a href="{% url 'films:series_list' %}" class="nav__item">Сериалы</a>
+
+                        {% if user.is_authenticated %}
+                            <a href="{% url 'users:exit' %}" class="nav__btn nav__item">Выйти</a>
+                        {% else %}
+{#                        <a href="{% url 'users:reg' %}" class="nav__btn">Регистрация</a>#}
+                            <a href="{% url 'users:user' %}?next={{ request.path }}" class="nav__btn nav__item">Войти</a>
+                        {% endif %}
+                    </div>
+
+                    {#burger menu#}
+                </nav>
+                <div class="burger">
+                    <div class="line1"></div>
+                    <div class="line2"></div>
+                    <div class="line3"></div>
+                </div>
+
+
+{#                <nav class="nav nav__sec">#}
+{#                    {% if user.is_authenticated %}#}
+{#                        <a href="{% url 'users:exit' %}" class="nav__btn">Выйти</a>#}
+{#                    {% else %}#}
+{#                        <a href="{% url 'users:reg' %}" class="nav__btn">Регистрация</a>#}
+{#                        <a href="{% url 'users:user' %}" class="nav__btn">Войти</a>#}
+{#                    {% endif %}#}
+{#                </nav>#}
+
+            </div>
+        </div>
+    </header>
+    {% block content %}
+    {% endblock %}
+    <nav class="list-pages">
+        <ul class="pagination">
+            {% if page_obj.has_previous %}
+                {% if page_obj.number|add:'-3' > 1 %}
+                    <li class="pagination__item">
+                        <a href="?{{ genre }}{{ year }}page=1">1</a>
+                    </li>
+                {% endif %}
+                {% if page_obj.number|add:'-3' >= 3 %}
+                    <li class="pagination__item pagination__item--dots">
+                            <a href="?{{ genre }}{{ year }}page={{ page_obj.previous_page_number|add:'-3' }}">
+                        <span class="pagination__link">• • •</span>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endif %}
+            {% if paginator.page_range|length > 1 %}
+                {% for i in paginator.page_range %}
+                    {% if page_obj.number == i %}
+                        <li class="pagination__item">
+                            <a class="pagination__link" href="#">{{ i }}</a>
+                        </li>
+                    {% elif i > page_obj.number|add:'-4' and i < page_obj.number|add:'4' %}
+                        <li class="pagination__item">
+                                <a class="pagination__link" href="?{{ genre }}{{ year }}page={{ i }}">{{ i }}</a>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+            {% if page_obj.has_next %}
+                {% if page_obj.number|add:'4' < page_obj.paginator.num_pages %}
+                    <li class="pagination__item pagination__item--dots">
+                            <a href="?{{ genre }}{{ year }}page={{ page_obj.next_page_number|add:'3' }}">
+                        <span class="pagination__link">• • •</span>
+                        </a>
+                    </li>
+                {% endif %}
+                {% if page_obj.number|add:'3' < page_obj.paginator.num_pages %}
+                    <li class="pagination__item">
+                            <a class="pagination__link" href="?{{ genre }}{{ year }}page={{ page_obj.paginator.num_pages }}">
+                                {{ page_obj.paginator.num_pages }}
+                            </a>
+                    </li>
+                {% endif %}
+            {% endif %}
+        </ul>
+    </nav>
+    <footer class="footer">
+     <div class="container">
+      <div class="row">
+        <div class="footer-col">
+          <h4>Компания</h4>
+          <ul>
+            <li><a href="{% url 'films:about' %}">О нас</a></li>
+            <li><a href="{% url 'films:our_services' %}">Наши сервиыс</a></li>
+            <li><a href="{% url 'films:privacy_policy' %}">Политика конфиденциальности</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Помощь</h4>
+          <ul>
+            <li><a href="{% url "films:faq" %}">FAQ</a></li>
+            <li><a href="{% url "films:status" %}">Статус</a></li>
+            <li><a href="{% url "films:paid_api" %}">API</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Меню</h4>
+          <ul>
+            <li><a href="{% url 'films:genres' %}">Жанры</a></li>
+            <li><a href="{% url 'films:films_list' %}">Фильмы</a></li>
+            <li><a href="{% url 'films:series_list' %}">Сериалы</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <h4>Связаться с нами</h4>
+          <div class="social-links">
+            <a href="#"><i class="fa-brands fa-telegram"></i></a>
+            <a href="#"><i class="fa-brands fa-vk"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+      </div>
+     </div>
+  </footer>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+
+</script>
+<script>
+    {% block script %}{% endblock %}
+</script>
+<script src="{% static 'js/main.js' %}"></script>
+<script src="{% static 'js/slick.min.js' %}" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.globe.min.js"></script>
+<script>
+   VANTA.GLOBE({
+        el: "#intro",
+        mouseControls: true,
+        touchControls: true,
+        gyroControls: false,
+        minHeight: 200.00,
+        minWidth: 200.00,
+        scale: 1.00,
+        scaleMobile: 1.00,
+        color: 0x5ab5bb,
+        size: 0.70,
+        backgroundColor: 0x323237
+    })
+</script>
+<script src="https://kinobd.ru/js/player_.js"></script>
+</body>
+</html>

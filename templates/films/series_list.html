@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Сериалы
+{% endblock %}
+
+
+{% block content %}
+       <section class="film__section">
+            <div class="container">
+                <div class="films_list">
+                    {% if series %}
+                        <div class="line_film">
+                        {% for film in series %}
+                                <div class="card_films">
+                                    <a href="{% url 'films:film_detail' film.move.id %}">
+                                         <div class="card__films-img">
+                                            <img width="240" height="350" src="https://kinopoiskapiunofficial.tech/images/posters/kp_small/{{ film.move.kp_id_movie }}.jpg" alt="{{ film.title }}">
+{#                                            <div class="card__films-title">#}
+{#                                                <span class="card__films-title-text">{{ film.move.title }}</span>#}
+{#                                            </div>#}
+                                        </div>
+                                    </a>
+                                </div>
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="film__list-err">Здесь пока ничего нет(</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+
+{% endblock %}

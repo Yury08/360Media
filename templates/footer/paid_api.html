@@ -1,0 +1,83 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    API
+{% endblock %}
+
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="paidApi__body">
+            {% if sub %}
+                <h2 class="paidApi__err">У вас не оплачена подписка на сайте.<br> Оплатите подписку и Api будет доступно</h2>
+                <div class="sub__card">
+                    <div class="sub__card-header">
+                        <h3 class="sub__rate">{{ sub.name }}</h3>
+                    </div>
+                    <div class="sub__price">
+                        <p>{{ sub.price }}руб</p>
+                        <p>/</p>
+                        <span>месяц</span>
+                    </div>
+                    <div class="sub__text-block">
+                        <p class="sub__text">
+                            {{ sub.desc }}
+                        </p>
+                    </div>
+                    <a href="{% url 'orders:order_create' %}" class="users__btn login__btn" type="submit">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        Оформить
+                    </a>
+                </div>
+            {% else %}
+                <div class="paidApi__header">
+                    <h2 class="paidApi__header-title">API</h2>
+                    <p class="paidApi__header-text">Набор методов для работы с API</p>
+                </div>
+                <div class="paidApi__root">
+                    <h3>films and series</h3><span> набор методов для работы с фильмами и сериалами</span>
+                    <div class="paidApi__root-card">
+                        <div class="paidApi__root-card-method">GET</div>
+                        <p class="paidApi__root-card-link">/move_api/moves/</p>
+                        <p class="paidApi__root-card-text">Получить данные о всех фильмах на сайте</p>
+                    </div>
+                    <div class="paidApi__root-card">
+                        <div class="paidApi__root-card-method">GET</div>
+                        <p class="paidApi__root-card-link">/move_api/move/{id}/</p>
+                        <p class="paidApi__root-card-text"> Получить данные об одном фильме на сайте по его id</p>
+                    </div>
+
+                    <h3>binding</h3><span> набор связующих таблиц</span>
+                    <div class="paidApi__root-card">
+                        <div class="paidApi__root-card-method">GET</div>
+                        <p class="paidApi__root-card-link">/move_api/binding/</p>
+                        <p class="paidApi__root-card-text">Получить данные о всех связующих таблицах</p>
+                    </div>
+                    <div class="paidApi__root-card">
+                        <div class="paidApi__root-card-method">GET</div>
+                        <p class="paidApi__root-card-link">/move_api/binding/{id}/</p>
+                        <p class="paidApi__root-card-text">Получить данные о жанрах фильма на сайте по id связующей таблицы</p>
+                    </div>
+
+                    <h3>genres</h3><span> набор методов для получения сведений о жанрах</span>
+                    <div class="paidApi__root-card">
+                        <div class="paidApi__root-card-method">GET</div>
+                        <p class="paidApi__root-card-link">/move_api/genres/</p>
+                        <p class="paidApi__root-card-text">Получить данные о всех жанрах на сайте</p>
+                    </div>
+                    <div class="paidApi__root-card">
+                        <div class="paidApi__root-card-method">GET</div>
+                        <p class="paidApi__root-card-link">/move_api/genre/{id}/</p>
+                        <p class="paidApi__root-card-text">Получить данные об одном жанре на сайте</p>
+                    </div>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+{% endblock %}

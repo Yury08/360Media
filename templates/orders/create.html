@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Заказ
+{% endblock %}
+
+
+{% block content %}
+<section class="section">
+    <div class="container">
+        <div class="order__inner">
+              <div class="sub__card">
+                    <div class="sub__card-header">
+                        <h3 class="sub__rate">{{ sub.name }}</h3>
+                    </div>
+                    <div class="sub__price">
+                        <p>{{ sub.price }}руб</p>
+                        <p>/</p>
+                        <span>месяц</span>
+                    </div>
+                    <div class="sub__text-block">
+                        <p class="sub__text">
+                            {{ sub.desc }}
+                        </p>
+                    </div>
+                </div>
+              <form class="order__form" method="post">
+                 <h2>Оформление заказа</h2>
+                  <div class="user-box">
+                    {{ form.first_name }}
+                    {{ form.first_name.errors }}
+                    <label>Имя</label>
+                  </div>
+                <div class="user-box">
+                    {{ form.last_name }}
+                    {{ form.last_name.errors }}
+                    <label>Фамилия</label>
+                </div>
+                <div class="user-box">
+                    {{ form.email }}
+                    {{ form.email.errors }}
+                    <label>Почта</label>
+                </div>
+                <button class="users__btn login__btn" type="submit">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                    Оформить
+                </button>
+                {% csrf_token %}
+              </form>
+        </div>
+    </div>
+</section>
+{% endblock %}

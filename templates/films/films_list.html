@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Фильмы
+{% endblock %}
+
+{% block meta %}
+    <meta name="keywords" content="фильмы, смотреть фильмы бесплатно в хорошем качестве, смотреть фильм">
+    <meta name="description" property="og:description" content="На этой странице вы сможете выбрать любой, понравившийся вам, фильм">
+{% endblock %}
+
+
+{% block content %}
+        <section class="film__section">
+            <div class="container">
+                <div class="films_list">
+                    {% if films %}
+                        <div class="line_film">
+                        {% for film in films %}
+                                <div class="card_films">
+                                    <a id="card-film" data-id="{{ film.move.id }}" href="{% url 'films:film_detail' film.move.id %}">
+                                        <div class="card__films-img">
+                                            <img src="https://kinopoiskapiunofficial.tech/images/posters/kp_small/{{ film.move.kp_id_movie }}.jpg" alt="{{ film.title }}">
+{#                                            <div class="card__films-title">#}
+{#                                                <span class="card__films-title-text">{{ film.move.title }}</span>#}
+{#                                            </div>#}
+                                        </div>
+
+{#                                        <div class="card__films-desc">#}
+{#                                            <a href="{% url 'films:film_detail' film.move.id %}" class="card__films-desc-title">{{ film.move.title }}</a>#}
+{#                                        </div>#}
+                                    </a>
+                                </div>
+                        {% endfor %}
+                        </div>
+                    {% else %}
+                        <p class="film__list-err">Здесь пока ничего нет(</p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+{% endblock %}

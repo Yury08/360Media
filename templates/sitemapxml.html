@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+
+   <url>
+      <loc>{{ request.scheme }}://{{ request.get_host }}</loc>
+      <changefreq>weekly</changefreq>
+      <priority>1.0</priority>
+   </url>
+
+    {% for object in films %}
+        <url>
+          <loc>{{ request.scheme }}://{{ request.get_host }}{{ object.get_absolute_url }}</loc>
+          <lastmod>{{ object.date }}</lastmod>
+          <changefreq>weekly</changefreq>
+          <priority>1.0</priority>
+       </url>
+    {% endfor %}
+
+
+    {% for object in genres %}
+        <url>
+          <loc>{{ request.scheme }}://{{ request.get_host }}{{ object.get_absolute_url }}</loc>
+          <lastmod>{{ object.date }}</lastmod>
+          <changefreq>weekly</changefreq>
+          <priority>0.7</priority>
+       </url>
+    {% endfor %}
+
+</urlset>

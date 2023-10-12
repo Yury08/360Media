@@ -1,0 +1,288 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Главная страница
+{% endblock %}
+
+{% block meta %}
+    <meta name="keywords" content="онлайн-кинотеатр, 360media, 360 media, 360медиа, 360 медиа">
+    <meta name="description" property="og:description" content="На этом сайте вы сможете смотреть ваши любимые фильмы и сериалы бесплатно">
+{% endblock %}
+
+
+{% block content %}
+    <div class="intro" id="intro">
+        <div class="container">
+            <div class="intro__inner">
+                <h1 class="intro__title">360Media</h1>
+                <p class="intro__text">Онлайн-кинотеатр</p>
+                <button class="intro__button" href="#">
+                    <a href="{% url 'films:films_list' %}" class="intro__button_text">Смотреть больше</a>
+                </button>
+            </div>
+
+        </div>
+    </div>
+    <section class="section">
+        <div class="container">
+            <div class="section__header">
+                <h1 class="section__header_title">Новинки</h1>
+                <!-- <a href="https://kino.is/1318868">Смотреть фильм</a>-->
+            </div>
+            <div class="section__inner">
+                <div class="section__slider" id="section-slider">
+                    <div class="card">
+                        <a href="https://kino.is/1318868/">
+                            <img data-lazy="./../../media/media/work_image/ant-man_and_the_wasp.webp"  alt="img">
+                            <h3 class="card__title">Человек-муравей и Оса: Квантомания (2023)</h3>
+                            <span class="rating">6.1</span>
+                         </a>
+                    </div>
+                    <div class="card">
+                          <a href="https://kino.is/572032/">
+                            <img data-lazy="./../../media/media/work_image/topgan-meverec.webp"  alt="img">
+                            <h3 class="card__title">Топ Ган: Мэверик (2022)</h3>
+                            <span class="rating">7.7</span>
+                         </a>
+                    </div>
+                    <div class="card">
+                        <a href="https://kino.is/505898/">
+                            <img data-lazy="./../../media/media/work_image/avatar-way-of-water.webp" alt="img">
+                            <h3 class="card__title">Аватар: Путь воды (2022)</h3>
+                            <span class="rating">7.9</span>
+                         </a>
+                    </div>
+                    <div class="card">
+                        <a href="https://kino.is/1405508/">
+                            <img data-lazy="./../../media/media/work_image/operation-fortun.webp" alt="img">
+                            <h3 class="card__title">Операция «Фортуна»: Искусство побеждать (2022)</h3>
+                            <span class="rating">7.1</span>
+                         </a>
+                    </div>
+                    <div class="card">
+                        <a href="https://kino.is/1338502/">
+                            <img data-lazy="./../../media/media/work_image/crash.webp" alt="img">
+                            <h3 class="card__title">Крушение (2022)</h3>
+                            <span class="rating">7.1</span>
+                         </a>
+                    </div>
+                     <div class="card">
+                        <a href="https://kino.is/1343908/">
+                            <img data-lazy="./../../media/media/work_image/glass-onion.webp" alt="img">
+                            <h3 class="card__title">Достать ножи: Стеклянная луковица (2022)</h3>
+                            <span class="rating">7.0</span>
+                         </a>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container container-section">
+            <div class="section__header">
+                <h1 class="section__header_title">Стоит пересмотреть</h1>
+                <!-- <a href="https://kino.is/447">Смотреть фильм</a>-->
+            </div>
+            <div class="section__inner">
+                <div class="section__slider" id="section-slider">
+                    <div class="card">
+                        <a target="_blank" href="https://kino.is/435/">
+                            <img data-lazy="./../../media/media/work_image/green_tom_hanks.webp"  alt="img">
+                            <h3 class="card__title">Зеленая миля (1999)</h3>
+                            <span class="rating">9.1</span>
+                         </a>
+                    </div>
+                    <div class="card">
+                          <a target="_blank" href="https://kino.is/329/">
+                            <img data-lazy="./../../media/media/work_image/list_of_hindler.webp"  alt="img">
+                            <h3 class="card__title">Список Шиндлера (1993)</h3>
+                            <span class="rating">8.8</span>
+                         </a>
+                    </div>
+                    <div class="card">
+                        <a target="_blank" href="https://kino.is/326/">
+                            <img data-lazy="./../../media/media/work_image/shoushenk.webp" alt="img">
+                            <h3 class="card__title">Побег из Шоушенка (1994)</h3>
+                            <span class="rating">9.1</span>
+                         </a>
+                    </div>
+                    <div class="card">
+                        <a target="_blank" href="https://kino.is/448/">
+                            <img data-lazy="./../../media/media/work_image/forest_gamp.webp" alt="img">
+                            <h3 class="card__title">Форрест Гамп (1994)</h3>
+                            <span class="rating">8.9</span>
+                         </a>
+                    </div>
+                    <div class="card">
+                        <a target="_blank" href="https://kino.is/258687/">
+                            <img data-lazy="./../../media/media/work_image/interstllar.webp" alt="img">
+                            <h3 class="card__title">Интерстеллар (2014)</h3>
+                            <span class="rating">8.6</span>
+                         </a>
+                    </div>
+                     <div class="card">
+                        <a target="_blank" href="https://kino.is/342/">
+                            <img data-lazy="./../../media/media/work_image/criminal.webp" alt="img">
+                            <h3 class="card__title">Криминальное чтиво (1994)</h3>
+                            <span class="rating">8.6</span>
+                         </a>
+                    </div>
+                    <div target="_blank" class="card">
+                        <a href="https://kino.is/404900/">
+                            <img data-lazy="./../../media/media/work_image/vo_vse_taghki.webp"  alt="img">
+                            <h3 class="card__title">Во все тяжкие (сериал 2008 – 2013)</h3>
+                            <span class="rating">8.9</span>
+                         </a>
+                    </div>
+                    <div target="_blank" class="card">
+                          <a href="https://kino.is/253245/">
+                            <img data-lazy="./../../media/media/work_image/office.webp"  alt="img">
+                            <h3 class="card__title">Офис (сериал 2005 – 2013)</h3>
+                            <span class="rating">8.6</span>
+                         </a>
+                    </div>
+                    <div class="card">
+                        <a target="_blank" href="https://kino.is/464963/">
+                            <img data-lazy="./../../media/media/work_image/igra_prestolov.webp" alt="img">
+                            <h3 class="card__title">Игра престолов (сериал 2011 – 2019)</h3>
+                            <span class="rating">9.0</span>
+                         </a>
+                    </div>
+                    <div class="card">
+                        <a target="_blank" href="https://kino.is/79848/">
+                            <img data-lazy="./../../media/media/work_image/soprano.webp" alt="img">
+                            <h3 class="card__title">Сопрано (сериал 1999 – 2007)</h3>
+                            <span class="rating">8.8</span>
+                         </a>
+                    </div>
+                    <div class="card">
+                        <a target="_blank" href="https://kino.is/77044/">
+                            <img data-lazy="./../../media/media/work_image/friends.webp" alt="img">
+                            <h3 class="card__title">Друзья (сериал 1994 – 2004)</h3>
+                            <span class="rating">9.2</span>
+                         </a>
+                    </div>
+                     <div class="card">
+                        <a target="_blank" href="https://kino.is/796660/">
+                            <img data-lazy="./../../media/media/work_image/better_col_soul.webp" alt="img">
+                            <h3 class="card__title">Лучше звоните Солу (сериал 2015 – 2022)</h3>
+                            <span class="rating">8.3</span>
+                         </a>
+                    </div>
+                </div>
+             </div>
+        </div>
+    </section>
+
+{#    <section class="section">#}
+{#        <div class="container">#}
+{#            <div class="sub__header">#}
+{#                <h2 class="sub__header-title">Тарифы</h2>#}
+{#                <p class="sub__header-text">В нашем сервисе фильмы и сериалы в основном бесплатные, но что бы посмотреть самые крутые новинки в хорошем качестве надо оформить подписку. Так же если ты разработчик и хочешь доступ к данным о фильмах в нашем онлайн кинотеатр нужно оформить подписку. Самый выгодный это All тариф, в который все включенно</p>#}
+{#            </div>#}
+{#            <div class="sub__body">#}
+{#                {% for sub in subscription %}#}
+{#                <div class="sub__card">#}
+{#                    <div class="sub__card-header">#}
+{#                        <h3 class="sub__rate">{{ sub.name }}</h3>#}
+{#                    </div>#}
+{#                    <div class="sub__price">#}
+{#                        <p>{{ sub.price }}руб</p>#}
+{#                        <p>/</p>#}
+{#                        <span>месяц</span>#}
+{#                    </div>#}
+{#                    <div class="sub__text-block">#}
+{#                        <p class="sub__text">#}
+{#                            {{ sub.desc }}#}
+{#                        </p>#}
+{#                    </div>#}
+{#                    <a class="users__btn login__btn" type="submit">#}
+{#                        <span></span>#}
+{#                        <span></span>#}
+{#                        <span></span>#}
+{#                        <span></span>#}
+{#                        Оформить#}
+{#                    </a>#}
+{#                </div>#}
+{#                {% endfor %}#}
+{#                <div class="sub__card">#}
+{#                    <div class="sub__card-header">#}
+{#                        <h3 class="sub__rate">ALL</h3>#}
+{#                    </div>#}
+{#                    <div class="sub__price">#}
+{#                        <p>149руб</p>#}
+{#                        <p>/</p>#}
+{#                        <span>месяц</span>#}
+{#                    </div>#}
+{#                    <p class="sub__text">#}
+{#                        10 users included#}
+{#                        2 GB of storage#}
+{#                        Email support#}
+{#                        Help center access#}
+{#                    </p>#}
+{#                    <a class="users__btn login__btn" type="submit">#}
+{#                        <span></span>#}
+{#                        <span></span>#}
+{#                        <span></span>#}
+{#                        <span></span>#}
+{#                        Оформить#}
+{#                    </a>#}
+{#                </div>#}
+{#                <div class="sub__card">#}
+{#                    <div class="sub__card-header">#}
+{#                        <h3 class="sub__rate">API</h3>#}
+{#                    </div>#}
+{#                    <div class="sub__price">#}
+{#                        <p>149руб</p>#}
+{#                        <p>/</p>#}
+{#                        <span>месяц</span>#}
+{#                    </div>#}
+{#                    <p class="sub__text">#}
+{#                        10 users included#}
+{#                        2 GB of storage#}
+{#                        Email support#}
+{#                        Help center access#}
+{#                    </p>#}
+{#                    <a class="users__btn login__btn" type="submit">#}
+{#                        <span></span>#}
+{#                        <span></span>#}
+{#                        <span></span>#}
+{#                        <span></span>#}
+{#                        Оформить#}
+{#                    </a>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </section>#}
+{% endblock %}
+
+{% block script %}
+     $(document).ready(function(){
+      $('.section__slider').slick({
+            slidesToShow: 4,
+            slidesToScroll: 1,
+            autoplay: true,
+            autoplaySpeed: 2000,
+            responsive:[
+                {
+                    breakpoint: 426,
+                    settings: {
+                        slidesToShow: 1
+                    }
+                },
+                {
+                    breakpoint: 769,
+                    settings: {
+                        slidesToShow: 2
+                    }
+                },
+            ]
+      });
+    });
+    window.addEventListener('scroll', function () {
+        let header = document.querySelector("header");
+        header.classList.toggle(".fixed", window.scrollY > 0);
+    })
+{% endblock %}

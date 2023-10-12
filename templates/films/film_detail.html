@@ -1,0 +1,167 @@
+{% extends 'base.html' %}
+{% load static cache %}
+
+
+{% block title %}
+    {{ film.nameRu }}
+{% endblock %}
+
+{% block icon %}
+    <link rel="icon" href="../../media/media/work_image/free-icon-letter-k-8142535.png">
+{% endblock %}
+
+{% block meta%}
+    <meta name="keywords" content="{{ film.keywords }}, {{ film.metatitle }}">
+    <meta name="description" property="og:description" content="На этой странице вы сможете посмотреть фильм {{ film.nameRu }}">
+{% endblock %}
+
+
+
+{% block content %}
+
+        <section class="film__section">
+            <div class="container">
+                <div class="film__inner">
+
+                        <div class="film__poster">
+
+                            <div class="film__poster-img">
+                                <img width="302" height="453" src="{{ film.posterUrl }}" alt="{{ film.nameRu }}">
+                            </div>
+
+                            <!--Поделиться фильмом-->
+                            <div class="film__share">
+                                <a class="film__share-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://127.0.0.1:8000/film/{{ film.id }}"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank" rel="nofollow">
+                                    <i class="fa fa-facebook fa-3x" aria-hidden="true"></i>
+                                </a>
+
+
+                                <a class="film__share-vk" href="https://vk.com/share.php?url=http://127.0.0.1:8000/film/{{ film.id }}"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank" rel="nofollow">
+                                    <i class="fa fa-vk fa-3x" aria-hidden="true"></i>
+                                </a>
+
+                                 <a class="film__share-twitter" href="https://twitter.com/share?url=http://127.0.0.1:8000/film/{{ film.id }}"
+                                   onclick="javascript:window.open(this.href, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,height=300,width=600');return false;"
+                                   target="_blank" rel="nofollow">
+                                    <i class="fa fa-twitter fa-3x" aria-hidden="true"></i>
+                                </a>
+{#                                <a class="film__share-vk" href="#">#}
+{#                                   <i class="fa fa-vk fa-3x" aria-hidden="true"></i>#}
+{#                                </a>#}
+                            </div>
+
+                        </div>
+
+
+                        <div class="film__info">
+                            <h2 class="film__info-title">{{ film.nameRu }}</h2>
+                            <p class="film__info-desc">{{ film.description }}</p>
+                            <p class="film__info-rating move-kp-info">Рейтинг KP: {{ film.ratingKinopoisk }}</p>
+                            <p class="film__info-rating move-kp-info">Рейтинг Imdb: {{ film.ratingImdb }}</p>
+                            <p class="film__info-year move-kp-info">Год: {{ film.year }}</p>
+                            <p class="film__info-len move-kp-info">Продолжительность: {{ film.filmLength }} минут</p>
+                            <p class="film__info-age move-kp-info">Ограничение: {{ film.ratingAgeLimits }}</p>
+                            <p class="film__info-countrys">
+                                {% for c in film.countries %}
+                                    <span class="film__info-country move-kp-info">{{ c.country }}</span>
+                                {% endfor %}
+                            </p>
+                            <p class="film__info-tags">
+                                {% for g in film.genres %}
+                                    <span class="film__info-tag move-kp-info">{{ g.genre }}</span>
+                                {% endfor %}
+                            </p>
+                            <p class="film__info-button-p"><a class="film__info-button" target="_blank" href="https://kino.is/{{ film.kinopoiskId }}">Смотреть фильм</a></p>
+                            <!--Рейтинг фильм-->
+
+                            <form enctype="multipart/form-data" action="{% url 'films:add_rating' %}" method="post" name="rating" class="rating__form">
+                                {% csrf_token %}
+                                <input type="hidden" value="{{ film.id }}" name="movie">
+                                <input type="hidden" value="{{ film.nameRu }}" name="movie_title"><span class="film__rating-rating">
+                                    {% for k, v in rating_form.fields.star.choices %}
+                                        <input id="rating{{ v }}" type="radio" name="star" value="{{ k }}">
+                                        <label for="rating{{ v }}">{{ k }}</label>
+                                    {% endfor %}
+                                </span>
+                            </form>
+                        </div>
+
+                </div>
+            <div class="film__form-container">
+                <div class="film__form-container-title">
+                    <h2>Комментарии</h2>
+                </div>
+
+                <div class="film__comment-form">
+                    <div class="film__creat-comment-form">
+                        <form enctype="multipart/form-data" action="{% url 'films:add_review' film.id %}" method="post" id="formReview">
+                            {% csrf_token %}
+                            <input type="hidden" name="parent" id="contactparent">
+                            <div class="film__form-body-name">
+                                <input type="text" name="name" id="contactusername" placeholder="Введите ваше имя">
+                            </div>
+                            <div class="film__form-text">
+                                <textarea name="text" id="contactcomment" rows="5" placeholder="Введите сообщение"></textarea>
+                            </div>
+                            <button type="submit">Отправить</button>
+                        </form>
+                    </div>
+
+                    <div class="film__view-comment-form">
+                        {% if comments %}
+                            {% for comm in comments.values %}
+                                <div class="film__view-container">
+                                        <div class="film__view-container-header">
+                                            <img class="film__comm-img" width="50" height="50" src="./../../media/default/def_img.jpg" alt="default">
+                                            <h3 style="">{{ comm.name }}:</h3>
+                                        </div>
+                                        <p>{{ comm.text }}</p>
+                                        <a data-id="{{ comm.id }}" data-action="{% if comm.action == 'like' %}un{% endif %}like" class="comm__like" id="reaction-like">
+                                            <i class="fa-sharp fa-solid fa-heart"></i>
+                                        </a>
+
+                                        <span class="count">
+                                            <span class="total">{{ comm.total_like }}</span>
+                                            like{{ comm.total_like|pluralize }}
+                                        </span>
+                                        <a class="response" href="#formReview" onclick="addReview('{{ comm.name }}', '{{ comm.id }}')">Ответить</a>
+                                        {% for rev in comm.children %}
+                                            <div class="comm_parent">
+                                                <div class="film__view-container-header">
+                                                    <img class="film__comm-img" width="50" height="50" src="./../../media/default/def_img.jpg" alt="default">
+                                                    <h3>{{ rev.name }}:</h3>
+                                                </div>
+                                                <p>{{ rev.text }}</p>
+
+                                                <a data-id="{{ rev.id }}" data-action="{% if rev.action == 'like' %}un{% endif %}like" class="comm__like" id="reaction-like">
+                                                    <i class="fa-sharp fa-solid fa-heart"></i>
+                                                </a>
+                                                <span class="count">
+                                                    <span class="total">{{ rev.total_like }}</span>
+                                                    like{{ rev.total_like|pluralize }}
+                                                </span>
+                                            </div>
+                                        {% endfor %}
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p>Пока комментариев нет :(</p>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            </div>
+        </section>
+{% endblock %}
+
+{% block script %}
+
+    function addReview(name, id) {
+        document.getElementById("contactparent").value = id;
+        document.getElementById("contactcomment").innerText = `${name}, `
+    }
+{% endblock %}

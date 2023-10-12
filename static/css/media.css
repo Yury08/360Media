@@ -1,0 +1,337 @@
+@media screen and (max-width: 1024px) {
+
+.section {
+   margin-top: 10vh;
+   margin-bottom: 15vh;
+}
+
+.login-box {
+    padding: 26px;
+}
+
+.section__header_title {
+    font-size: 30px;
+}
+
+.card__title {
+    font-size: 16px;
+}
+
+.card__title {
+    font-size: 16px;
+}
+
+.card a img {
+   border-radius: 0;
+   width: 202px;
+   height: 300px;
+   margin-bottom: 15px;
+}
+.search__input-active {
+   width: 200px
+}
+.film__view-comment-form h3 {
+   font-size: 18px;
+}
+.film__view-comment-form p {
+   font-size: 15px;
+}
+.card_films {
+   margin-right: 1%;
+}
+.film__info {
+   width: 65%;
+}
+}
+
+@media screen and (max-width: 768px) {
+
+    .about__body-text {
+        font-size: 17px;
+        width: 95%;
+    }
+
+    .intro__title {
+        font-size: 90px;
+        line-height: 98px;
+    }
+
+    .intro__text {
+        font-size: 30px;
+        line-height: 48px;
+    }
+
+    .intro__button {
+        margin-top: 28px;
+    }
+}
+
+@media (max-width: 425px) {
+.about__body-text {
+    font-size: 16px;
+    width: 98%;
+    line-height: 18px;
+}
+
+.login-box {
+    margin: 90px auto;
+    width: 330px;
+    padding: 30px;
+}
+
+.search-btn-active {
+    margin-left: -42px;
+}
+
+.search__input-active {
+    margin-left: 5px;
+}
+
+.intro__title {
+   font-size: 60px;
+   text-align: center;
+   line-height: 75px;
+}
+.intro__text {
+   text-align: center;
+   margin-left: 0;
+   font-size: 24px;
+}
+.intro__button {
+  display: none;
+}
+.card a img {
+   width: 230px;
+   height: 332px;
+}
+.section__header_title {
+   font-size: 30px;
+}
+.genre__card-img img {
+    width: 170px;
+    height: 233px;
+}
+.genre__card-title {
+   font-size: 17px;
+}
+.genre__card-text {
+   margin-top: 9px;
+   font-size: 14px;
+}
+.film__card {
+    margin: 35px 0 35px 0;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.film__card-descr {
+   text-align: center;
+   margin: 35px 0 0 0;
+}
+.film__card-img {
+   margin-right: 0;
+}
+.card_films {
+   width: 48%;
+   margin-right: 0;
+}
+.card__films-img img {
+   width: 180px;
+   height: 280px;
+}
+.film__inner {
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.film__poster {
+   width: 74%;
+}
+.film__info-title {
+   font-size: 30px;
+   margin-bottom: 30px;
+   text-align: center;
+   margin-top: 30px;
+}
+.film__info-desc {
+   font-size: 15px;
+   margin-bottom: 30px;
+   text-align: center;
+}
+.film__info-button {
+   padding: 13px;
+}
+
+.move-kp-info {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.film__info-countrys {
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.film__info-tags {
+    margin-bottom: 36px;
+    text-align: center;
+}
+
+.film__info-button-p {
+    text-align: center;
+}
+
+.film__comment-form {
+    flex-direction: column;
+    display: flex;
+    align-items: start;
+    padding: 50px 0 0 0;
+}
+.film__form-container-title h2 {
+   color: var(--color-white);
+   font-size: 22px;
+   text-align: center;
+}
+.film__form-container {
+   margin-top: 35%;
+}
+.film__info-container {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   justify-content: center;
+}
+.rating__form {
+   margin-left: 30%;
+}
+.film__creat-comment-form {
+   margin-bottom: 50px;
+}
+.genre__card {
+    flex-direction: column;
+    margin: 50px 0 50px 0;
+    align-items: center;
+}
+.genre__card-descr {
+   margin-top: 35px;
+   text-align: center;
+}
+.genre__card-img {
+    margin-right: 0;
+}
+.film__info {
+    width: 100%;
+}
+}
+
+@media (max-width: 375px) {
+
+.about__header-title {
+    margin-top: 30%;
+    margin-bottom: 31px;
+}
+
+.about__body-text {
+    width: 98%;
+}
+
+.login-box {
+    width: 275px;
+    padding: 20px;
+}
+
+.users__btn {
+    font-size: 13px;
+    margin-top: 20px;
+}
+
+.login-box h2 {
+    font-size: 20px;
+}
+
+.film__view-comment-form {
+    width: 50%;
+}
+
+.search-btn-active {
+    margin-left: -67px;
+}
+
+.search__input-active {
+    margin-left: 5px;
+}
+
+.section {
+   margin-top: 0;
+   margin-bottom: 15vh;
+}
+.card a img {
+    width: 258px;
+    height: 342px;
+}
+
+.section__slider {
+    position: relative;
+    padding: 0 0;
+}
+
+.section__inner {
+    padding: 0;
+}
+
+.card__films-img img {
+   width: 165px;
+   height: 250px;
+}
+.card_films {
+    margin-bottom: 15px;
+}
+.film__poster {
+    width: 86%;
+}
+.film__info-title {
+    font-size: 28px;
+}
+.rating__form {
+    margin-left: 27%;
+}
+}
+
+@media (max-width: 320px) {
+.container {
+    padding: 0 9px;
+}
+.intro__title {
+    font-size: 50px;
+}
+
+.logo {
+    font-size: 21px;
+}
+
+.card a img {
+    width: 236px;
+    height: 334px
+}
+.card__title {
+    font-size: 16px;
+    width: 100%;
+}
+.section__header_title {
+    font-size: 25px;
+}
+.card__films-img img {
+    width: 141px;
+    height: 212px;
+}
+.card_films {
+    margin-bottom: 8px;
+}
+.film__poster-img img {
+    width: 250px;
+    height: 400px;
+}
+.rating__form {
+    margin-left: 23%;
+}
+}
